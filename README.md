@@ -33,8 +33,8 @@ Welcome to the Company Task Management System! This system allows efficient mana
 
 2. Create a virtual environment and activate it:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   python -m venv env
+   source env/bin/activate  # On Windows use `env\Scripts\activate`
    ```
 
 3. Install dependencies:

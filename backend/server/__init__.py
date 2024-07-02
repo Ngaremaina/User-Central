@@ -7,7 +7,9 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path='',
+            static_folder='../../my-app/build',
+            template_folder='../../my-app/build')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -19,4 +21,4 @@ migrate = Migrate(app, db)
 
 jwt = JWTManager(app)
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000",}})
+CORS(app, resources={r"/*": {"origins": [{"http://localhost:3000"},]}})
