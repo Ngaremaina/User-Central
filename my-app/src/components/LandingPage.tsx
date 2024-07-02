@@ -2,13 +2,13 @@ import { Link } from "react-router-dom"
 
 const LandingPage: React.FC  = () => {
     return(
-        <div className="">
+        <div className="landing">
             <div className="bg-gray-100">
                 
             <section className="bg-blue-teal-gradient relative bg-blue-600 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 overflow-hidden flex
             items-center h-screen">
                 
-                <div className="h-full absolute top-0 left-0 z-0">
+                <div className="w-full h-full absolute top-0 left-0 z-0">
                 <img src="https://cdn.pixabay.com/photo/2021/02/03/00/10/receptionists-5975962_1280.jpg" alt = "home" className="w-full cover opacity-20" />
                 </div>
                 <div className="lg:w-3/4 xl:w-3/4 relative z-5 lg:mt-4">
