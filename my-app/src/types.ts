@@ -1,6 +1,3 @@
-import exp from "constants";
-
- 
 export interface UserData {
     id: number;
     username: string;

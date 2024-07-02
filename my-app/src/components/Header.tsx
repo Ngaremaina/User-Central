@@ -7,7 +7,7 @@ export default function Header(){
     
     return(        
 
-        <nav className="bg-white dark:bg-gray-900 fixed w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600 relative">
+        <nav className="bg-white dark:bg-gray-900 w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600 relative">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href={userData?.is_manager ? "/manager-dashboard" : "/dashboard"} className="flex items-center space-x-3 rtl:space-x-reverse">
 

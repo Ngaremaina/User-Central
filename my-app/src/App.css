@@ -12,3 +12,6 @@ code {
     monospace;
 }
 
+nav{
+  position: fixed;
+}
