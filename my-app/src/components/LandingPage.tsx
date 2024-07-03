@@ -12,12 +12,12 @@ const LandingPage: React.FC  = () => {
                 <img src="https://cdn.pixabay.com/photo/2021/02/03/00/10/receptionists-5975962_1280.jpg" alt = "home" className="w-full cover opacity-20" />
                 </div>
                 <div className="lg:w-3/4 xl:w-3/4 relative z-5 lg:mt-4">
-                <h1 className="text-white text-4xl md:text-5xl xl:text-8xl font-bold">CISA</h1>
+                <h1 className="text-white text-4xl md:text-5xl xl:text-8xl font-bold">User Central</h1>
                 <div>
                     
                     <h1 className="text-white text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">Experience Excellence</h1>
                     <p className="text-blue-100 text-xl md:text-2xl leading-snug mt-4">Your One-Stop Solution for Unmatched Customer Service</p>
-                    <p className="text-blue-100 text-xl md:text-2xl leading-snug mt-4">Welcome to CISA, where exceptional customer service is our commitment. At CISA, we understand the importance of a seamless, efficient, and personalized experience. Our dedicated team is here to assist you with all your needs, providing solutions that exceed your expectations.</p>
+                    <p className="text-blue-100 text-xl md:text-2xl leading-snug mt-4">Welcome to User Central, where exceptional customer service is our commitment. At User Central, we understand the importance of a seamless, efficient, and personalized experience. Our dedicated team is here to assist you with all your needs, providing solutions that exceed your expectations.</p>
                     
 
                    
