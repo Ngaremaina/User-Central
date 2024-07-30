@@ -67,6 +67,20 @@ Welcome to the Company Task Management System! This system allows efficient mana
 
 4. Access the application in your browser at `http://localhost:3000`.
 
+## Running with Docker
+
+1. Ensure Docker and Docker Compose are installed on your system.
+
+2. Navigate to the project root directory.
+
+3. Build and run the Docker containers:
+
+    ```sh
+    docker-compose up --build
+    ```
+
+The Flask API backend will be accessible at `http://localhost:5000` and the React frontend at `http://localhost:3000`.
+
 ## API Endpoints
 
 - **GET /users**: Fetch all users.
