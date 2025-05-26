@@ -20,5 +20,8 @@ migrate = Migrate(app, db)
 
 jwt = JWTManager(app)
 
-CORS(app, origins=["http://localhost:3000", "https://user-central.vercel.app"])
+CORS(
+    app, 
+    origins=["http://localhost:3000", "https://user-central.vercel.app"],
+    supports_credentials=True)
 
