@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Header from './Header';
-import { UserData, TaskDetails } from '../types';
+import { UserData, TaskDetails } from '../lib/types';
 import { AuthContext } from '../context/Authentication';
 
 

@@ -56,6 +56,11 @@ export interface Users{
     username: string;
   }
 
+export interface AuthUser {
+  email: string;
+  password: string;
+}
+
 export interface DepartmentDetails {
     name: string;
 }
@@ -78,3 +83,5 @@ export interface RegisterUser{
     password:string;
 
 }
+
+

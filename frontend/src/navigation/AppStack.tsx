@@ -1,38 +1,21 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import CreateTaskForm from '../components/CreateTasks';
-import AddDepartment from '../components/AddDepartment';
-import Dashboard from '../components/Dashboard';
-import ManagerDashboard from '../components/ManagerDashBoard';
+import CreateTaskForm from '../pages/CreateTasks';
+import AddDepartment from '../pages/AddDepartment';
+import Dashboard from '../pages/Dashboard';
+import ManagerDashboard from '../pages/ManagerDashBoard';
 import { AuthContext } from '../context/Authentication';
-import UpdateUserForm from '../components/UpdateUser';
-import { Department } from '../types';
-import axios from 'axios';
-import UpdateDepartmentForm from '../components/UpdateDepartment';
-import UpdateTaskForm from '../components/UpdateTasks';
-import UserForm from '../components/AddUsers';
+import UpdateUserForm from '../pages/UpdateUser';
+import UpdateDepartmentForm from '../pages/UpdateDepartment';
+import UpdateTaskForm from '../pages/UpdateTasks';
+import UserForm from '../pages/AddUsers';
+import { useGlobalContext } from '../context/GlobalContext';
 
 
 const App: React.FC = () => {
-    const {userData} = useContext(AuthContext)
-    const [departments, setDepartments] = useState<Department[]>([]);
-    
+  const {userData} = useContext(AuthContext)
+  const {departments} = useGlobalContext()
 
-  useEffect(() => {
-
-    const fetchDepartments = async () => {
-        
-        try {
-          const response = await axios.get<Department[]>("/departments");
-          setDepartments(response.data);
-        } catch (err) {
-          console.error('Error fetching employees');
-        } 
-      };
-
-    fetchDepartments();
-  }, []);
-  
   return (
     <>           
         <Routes>
@@ -44,7 +27,7 @@ const App: React.FC = () => {
             path="/manager-dashboard"
             element={userData ? <ManagerDashboard departments = {departments}/> : <p>Loading...</p>}
           />
-         
+        
             <Route path="/manager-departments" element = {<AddDepartment departments = {departments}/>}></Route>
             <Route path="/manager-users" element = {<UserForm departments = {departments} />}></Route>
             <Route path="/manager-tasks" element = {<CreateTaskForm departments = {departments}/>}></Route>

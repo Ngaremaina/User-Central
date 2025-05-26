@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import { useParams } from 'react-router-dom';
-import { UserFormState, DepartmentsProps } from '../types';
+import { UserFormState, DepartmentsProps } from '../lib/types';
+import { getUserDetails } from '../services/Users';
 
 const UpdateUserForm: React.FC<DepartmentsProps> = ({departments}) => {
     const { id } = useParams<{ id: string }>();
@@ -21,8 +22,12 @@ const UpdateUserForm: React.FC<DepartmentsProps> = ({departments}) => {
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get<UserFormState>(`/users/${id}`);
-                setFormData(response.data);
+                const response = await getUserDetails(id);
+                if (response) {
+                    setFormData(response);
+                } else {
+                    setError('No user data found.');
+                }
             } catch (error) {
                 console.error('Error fetching user details:', error);
                 setError('Error fetching user details');

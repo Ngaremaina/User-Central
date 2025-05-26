@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import { useParams } from 'react-router-dom';
-import { DepartmentsProps, DepartmentDetails } from '../types';
+import { DepartmentsProps, DepartmentDetails } from '../lib/types';
 
 
 const UpdateDepartmentForm: React.FC<DepartmentsProps> = ({departments}) => {

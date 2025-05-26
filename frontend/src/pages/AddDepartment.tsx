@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
-import { DepartmentsProps, DepartmentDetails } from '../types';
+import { DepartmentsProps, DepartmentDetails } from '../lib/types';
 import { Link } from 'react-router-dom';
 
 const AddDepartment: React.FC<DepartmentsProps> = ({departments}) => {

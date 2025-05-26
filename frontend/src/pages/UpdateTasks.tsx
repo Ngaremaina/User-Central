@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import { useParams } from 'react-router-dom';
-import { User, DepartmentsProps, TaskDetails } from '../types';
+import { User, DepartmentsProps, TaskDetails } from '../lib/types';
 
 const UpdateTaskForm: React.FC<DepartmentsProps> = ({departments}) => {
     const { id } = useParams<{ id: string }>();

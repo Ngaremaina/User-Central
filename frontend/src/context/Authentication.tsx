@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState,ReactNode } from 'react';
-import axios from "axios"
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../services/Users';
 
 interface UserData {
   id: number;
@@ -16,7 +16,7 @@ interface AuthProviderProps {
 
 interface AuthContextType {
   isLoading: boolean;
-  loginUser: (email: string, password: string) => void;
+  handleLoginUser: (email: string, password: string) => Promise<boolean>;
   logoutUser: () => void;
   userToken: string | null;
   userData: UserData | null;
@@ -24,7 +24,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>({
   isLoading: false,
-  loginUser: () => {},
+  handleLoginUser: async () => {return false},
   logoutUser: () => {},
   userToken: null,
   userData: null,
@@ -36,29 +36,34 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const navigate = useNavigate();
 
-  const loginUser = async (email: string, password: string) => {
+  const handleLoginUser = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
-      const res = await axios.post("/login", {
-        email,
-        password,
-      });
-      
+      const res = await loginUser(email, password);
+
       const userdata: UserData = res.data;
-      console.log(userdata)
+      if (!userdata.access_token) {
+        throw new Error("Missing access token");
+      }
+
+      console.log(userdata);
       setUserData(userdata);
       setUserToken(userdata.access_token);
-      
-      
+
       localStorage.setItem('userInfo', JSON.stringify(userdata));
       localStorage.setItem('userToken', userdata.access_token);
+
       navigate(userdata.is_manager ? '/manager-dashboard' : '/dashboard');
+
+      return true;
     } catch (error: any) {
-      console.log(error);
+      console.error("Login failed:", error);
+      return false;
     } finally {
       setIsLoading(false);
     }
   };
+
 
   const logoutUser = () => {
     setUserToken(null)
@@ -89,7 +94,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ isLoading, loginUser, logoutUser, userToken, userData }}>
+    <AuthContext.Provider value={{ isLoading, handleLoginUser, logoutUser, userToken, userData }}>
       {children}
     </AuthContext.Provider>
   );

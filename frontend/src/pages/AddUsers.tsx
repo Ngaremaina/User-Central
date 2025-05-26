@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
-import { DepartmentsProps } from '../types';
+import { DepartmentsProps } from '../lib/types';
 import { Link } from 'react-router-dom';
 
 
@@ -27,16 +27,7 @@ const UserForm: React.FC<DepartmentsProps> = ({departments}) => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(formData)
-        try {
-            await axios.post('/register', formData);
-            // Optionally handle success (e.g., show success message, redirect)
-            console.log('User created successfully');
-            window.location.reload()
-        } catch (error) {
-            console.error('Error creating department:', error);
-            // Handle error (e.g., show error message to user)
-        }
-       
+        
     };
 
 

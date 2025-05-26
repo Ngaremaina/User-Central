@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import { Link } from 'react-router-dom';
-import { DepartmentsProps, Users } from '../types';
+import { DepartmentsProps, Users } from '../lib/types';
 
 
 
