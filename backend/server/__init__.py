@@ -5,11 +5,10 @@ from flask_migrate import Migrate
 from models import db
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+
 load_dotenv()
 
-app = Flask(__name__,static_url_path='',
-            static_folder='../../frontend/build',
-            template_folder='../../frontend/build')
+app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -21,4 +20,4 @@ migrate = Migrate(app, db)
 
 jwt = JWTManager(app)
 
-CORS(app, resources={r"/*": {"origins": [{"http://localhost:3000"},]}})
+CORS(app, resources={r"/*": {"origins": [{"http://localhost:3000", "https://user-central.vercel.app"},]}})
