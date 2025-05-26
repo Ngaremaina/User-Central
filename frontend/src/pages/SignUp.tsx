@@ -82,18 +82,18 @@ const Register: React.FC<DepartmentsProps> = ({departments}) => {
                   />
 
                   <div>
-                    <label htmlFor="department_id" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label htmlFor="department_id" className="block mb-2 text-sm font-medium text-gray-900">
                         Department:
                     </label>
                     <select
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="w-full text-sm text-slate-800 border border-slate-300 pl-4 pr-10 py-3 rounded-lg outline-blue-600"
                         id="department_id"
                         name="department_id"
                         value={formData.department_id}
                         onChange={handleChange}
                     >
                         <option value="">Select a department</option>
-                        {departments.map((department) => (
+                        {departments?.map((department) => (
                             <option key={department.id} value={department.id}>
                                 {department.name}
                             </option>
@@ -102,7 +102,7 @@ const Register: React.FC<DepartmentsProps> = ({departments}) => {
                   </div>
                     
 
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-sm font-medium text-gray-900">
                     <input
                       type="checkbox"
                       name="is_manager"
@@ -137,7 +137,7 @@ const Register: React.FC<DepartmentsProps> = ({departments}) => {
                      />
                      <SubmitButton text="Submit"/>
    
-                     <p className="text-sm !mt-6 text-center text-slate-500">Don't have an account <Link to="/sign up" className="text-blue-600 font-medium hover:underline ml-1 whitespace-nowrap">Register here</Link></p>              
+                     <p className="text-sm !mt-6 text-center text-slate-500">Already have an account? <Link to="/sign in" className="text-blue-600 font-medium hover:underline ml-1 whitespace-nowrap">Login Here</Link></p>              
    
                  </FormTemplate>
                  
